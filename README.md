@@ -10,16 +10,16 @@ A Web Push library for Java 11. Supports payloads and VAPID.
 For Gradle, add the following dependency to `build.gradle`:
 
 ```groovy
-compile group: 'nl.martijndwars', name: 'web-push', version: '5.1.1'
+compile group: 'com.clocworks', name: 'web-push', version: '6.0.0'
 ```
 
 For Maven, add the following dependency to `pom.xml`:
 
 ```xml
 <dependency>
-    <groupId>nl.martijndwars</groupId>
+    <groupId>com.clocworks</groupId>
     <artifactId>web-push</artifactId>
-    <version>5.1.1</version>
+    <version>6.0.0</version>
 </dependency>
 ```
 

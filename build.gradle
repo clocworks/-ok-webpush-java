@@ -103,3 +103,5 @@ artifacts {
 if (hasProperty('release')) {
     apply from: 'release.gradle'
 }
+
+tasks.publish.dependsOn(shadowJar)
