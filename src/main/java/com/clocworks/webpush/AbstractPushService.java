@@ -20,6 +20,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public abstract class AbstractPushService<T extends AbstractPushService<T>> {
     private static final SecureRandom SECURE_RANDOM = new SecureRandom();
     public static final String SERVER_KEY_ID = "server-key-id";

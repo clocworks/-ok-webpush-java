@@ -4,11 +4,6 @@ import com.clocworks.encrypt.Encoding;
 import com.clocworks.encrypt.Encrypted;
 import com.clocworks.encrypt.Utils;
 import okhttp3.*;
-//import org.apache.http.HttpResponse;
-//import org.apache.http.client.methods.HttpPost;
-//import org.apache.http.entity.ByteArrayEntity;
-//import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-//import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.jetbrains.annotations.NotNull;
 import org.jose4j.jws.AlgorithmIdentifiers;
@@ -19,10 +14,10 @@ import org.jose4j.lang.JoseException;
 import java.io.IOException;
 import java.security.*;
 import java.util.Base64;
-import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
-//import java.util.concurrent.Future;
 
+
+@SuppressWarnings("unused")
 public class PushService extends AbstractPushService<PushService> {
 
     private final OkHttpClient client = new OkHttpClient();
@@ -51,16 +46,13 @@ public class PushService extends AbstractPushService<PushService> {
     }
 
     /**
-     * Send a notification and wait for the response.
+     * Send a notification and call the callbacks on response
      *
-     * @param notification
-     * @param encoding
-     * @return
-     * @throws GeneralSecurityException
-     * @throws IOException
-     * @throws JoseException
-     * @throws ExecutionException
-     * @throws InterruptedException
+     * @param notification Notification to send
+     * @param encoding     AESGCM or AES128GCM
+     * @throws GeneralSecurityException possible exception
+     * @throws IOException              If body read fail
+     * @throws JoseException            If error creating VAPID
      */
     public void send(Notification notification, Encoding encoding, Consumer<Response> onResponse, Consumer<Throwable> onFailure) throws GeneralSecurityException, IOException, JoseException {
 
@@ -73,7 +65,7 @@ public class PushService extends AbstractPushService<PushService> {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 var body = response.body();
-                if(body != null) System.out.println(body.string());
+                if (body != null) System.out.println(body.string());
                 else System.out.println("no body ");
                 try (response; response) {
                     onResponse.accept(response);
@@ -84,6 +76,25 @@ public class PushService extends AbstractPushService<PushService> {
 
     public void send(Notification notification, Consumer<Response> onResponse, Consumer<Throwable> onFailure) throws JoseException, GeneralSecurityException, IOException {
         send(notification, Encoding.AESGCM, onResponse, onFailure);
+    }
+
+    /**
+     * Send a notification and wait for the response.
+     *
+     * Warning: The response must be closed after receipt
+     * @param notification Notification to send
+     * @param encoding     AESGCM or AES128GCM
+     * @throws GeneralSecurityException possible exception
+     * @throws IOException              If body read fail
+     * @throws JoseException            If error creating VAPID
+     * @return Response containing body and headers of response
+     */
+    public Response send(Notification notification, Encoding encoding) throws JoseException, GeneralSecurityException, IOException {
+        return client.newCall(prepareRequest(notification, encoding)).execute();
+    }
+
+    public Response send(Notification notification) throws JoseException, GeneralSecurityException, IOException {
+        return send(notification, Encoding.AESGCM);
     }
 
     private Request prepareRequest(Notification notification, Encoding encoding) throws GeneralSecurityException, IOException, JoseException {

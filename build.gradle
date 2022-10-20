@@ -12,7 +12,7 @@ apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'com.clocworks'
-version '5.1.2-SNAPSHOT'
+version '6.0.0'
 
 repositories {
     mavenLocal()
@@ -21,20 +21,13 @@ repositories {
 
 dependencies {
     // For CLI
-    implementation group: 'com.beust', name: 'jcommander', version: '1.81'
-
-    // For making HTTP requests
-//    implementation group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.5'
-
-    // For making async HTTP requests
-//    implementation group: 'org.asynchttpclient', name: 'async-http-client', version: '2.12.3'
+    implementation group: 'com.beust', name: 'jcommander', version: '1.82'
 
     // For making async HTTP requests
     implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.10.0'
 
     // For cryptographic operations
     implementation group: 'org.bouncycastle', name: 'bcprov-jdk15to18', version: '1.72'
-//    shadow group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
 
     // For creating and signing JWT
     implementation group: 'org.bitbucket.b_c', name: 'jose4j', version: '0.9.1'
@@ -66,12 +59,12 @@ wrapper {
 }
 
 compileJava {
-    sourceCompatibility =JavaVersion.VERSION_1_10
-    targetCompatibility = JavaVersion.VERSION_1_10
+    sourceCompatibility =JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 compileTestJava {
-    sourceCompatibility = JavaVersion.VERSION_1_10
+    sourceCompatibility = JavaVersion.VERSION_11
 }
 
 mainClassName = 'com.clocworks.webpush.cli.Cli'
