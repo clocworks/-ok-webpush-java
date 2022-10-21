@@ -1,13 +1,6 @@
 package com.clocworks.webpush.selenium;
 
-import com.clocworks.webpush.Subscription;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import com.clocworks.webpush.Notification;
-import com.clocworks.webpush.PushService;
-import org.apache.http.HttpResponse;
+import com.clocworks.webpush.push.PushService;
 import org.junit.jupiter.api.function.Executable;
 
 import java.security.GeneralSecurityException;

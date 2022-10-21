@@ -1,6 +1,8 @@
-package com.clocworks.webpush;
+package com.clocworks.webpush.notification;
 
 import com.clocworks.encrypt.Utils;
+import com.clocworks.webpush.push.Subscription;
+import com.clocworks.webpush.push.Urgency;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 
 import java.net.MalformedURLException;
@@ -162,7 +164,7 @@ public class Notification {
     }
 
     public static NotificationBuilder builder() {
-        return new Notification.NotificationBuilder();
+        return new NotificationBuilder();
     }
 
     public static class NotificationBuilder {

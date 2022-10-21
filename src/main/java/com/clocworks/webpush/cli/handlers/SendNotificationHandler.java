@@ -1,8 +1,8 @@
 package com.clocworks.webpush.cli.handlers;
 
-import com.clocworks.webpush.Notification;
-import com.clocworks.webpush.PushService;
-import com.clocworks.webpush.Subscription;
+import com.clocworks.webpush.notification.Notification;
+import com.clocworks.webpush.push.PushService;
+import com.clocworks.webpush.push.Subscription;
 import com.clocworks.webpush.cli.commands.SendNotificationCommand;
 
 public class SendNotificationHandler implements HandlerInterface {

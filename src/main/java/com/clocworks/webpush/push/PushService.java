@@ -1,8 +1,9 @@
-package com.clocworks.webpush;
+package com.clocworks.webpush.push;
 
 import com.clocworks.encrypt.Encoding;
 import com.clocworks.encrypt.Encrypted;
 import com.clocworks.encrypt.Utils;
+import com.clocworks.webpush.notification.Notification;
 import okhttp3.*;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.jetbrains.annotations.NotNull;

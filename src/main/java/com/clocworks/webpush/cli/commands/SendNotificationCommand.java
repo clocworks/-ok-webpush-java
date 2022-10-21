@@ -2,7 +2,7 @@ package com.clocworks.webpush.cli.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
-import com.clocworks.webpush.Subscription;
+import com.clocworks.webpush.push.Subscription;
 
 @Parameters(separators = "=", commandDescription = "Send a push notification")
 public class SendNotificationCommand {

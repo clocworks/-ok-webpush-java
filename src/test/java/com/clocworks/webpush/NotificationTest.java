@@ -3,6 +3,8 @@ package com.clocworks.webpush;
 import java.security.GeneralSecurityException;
 import java.security.Security;
 import java.time.Duration;
+
+import com.clocworks.webpush.notification.Notification;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

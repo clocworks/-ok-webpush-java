@@ -1,4 +1,4 @@
-package com.clocworks.webpush;
+package com.clocworks.webpush.push;
 
 import com.clocworks.encrypt.Encoding;
 import com.clocworks.encrypt.Encrypted;

@@ -1,4 +1,4 @@
-package com.clocworks.webpush;
+package com.clocworks.webpush.push;
 
 public class Subscription {
     public String endpoint;
